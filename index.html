@@ -66,7 +66,9 @@
         footer p {
             margin: 0;
         }
-        /* Add button style */
+        #contact {
+            margin-top: 20px; /* Reduces space above the form */
+        }
         input[type="submit"] {
             background-color: #2c3e50;
             color: white;
@@ -102,9 +104,6 @@
     </div>
 </section>
 
-<footer>
-    <p>&copy; 2024 DefendX - All Rights Reserved</p>
-</footer>
 <section id="contact">
     <h2>Contact Us</h2>
     <form action="https://formspree.io/f/xovazkaq" method="POST">
@@ -124,8 +123,10 @@
     </form>
 </section>
 
-</body>
-</html>
+<footer>
+    <p>&copy; 2024 DefendX - All Rights Reserved</p>
+</footer>
+
 <script>
     const form = document.querySelector('form');
     form.addEventListener('submit', function(event) {
@@ -140,6 +141,11 @@
             } else {
                 alert('There was an error submitting the form.');
             }
+        }).catch(() => {
+            alert('There was an error submitting the form.');
         });
     });
 </script>
+
+</body>
+</html>
