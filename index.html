@@ -134,12 +134,19 @@
         fetch(form.action, {
             method: 'POST',
             body: new FormData(form),
+            headers: { 'Accept': 'application/json' }  // Ensures we get the correct response format
         }).then(response => {
             if (response.ok) {
                 alert('Form submitted successfully!');
                 form.reset(); // Clear the form
             } else {
-                alert('There was an error submitting the form.');
+                response.json().then(data => {
+                    if (data.errors) {
+                        alert('There was an error: ' + data.errors.map(e => e.message).join(', '));
+                    } else {
+                        alert('There was an error submitting the form.');
+                    }
+                });
             }
         }).catch(() => {
             alert('There was an error submitting the form.');
